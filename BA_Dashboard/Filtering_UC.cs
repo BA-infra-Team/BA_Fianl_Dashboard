@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -16,6 +17,8 @@ namespace BA_Dashboard
         public static string filepath { get; set; }
         public static string fileName { get; set; }
         public static string message { get; set; }
+        public static string responseData { get; set; }
+        public static int rev;
         public static byte[] Buffer { get; set; }
         public static byte[] data { get; set; }
         public static List<FilteringData> list = new List<FilteringData>();
@@ -27,7 +30,8 @@ namespace BA_Dashboard
             InitializeComponent();
             // Set to details view.
             listView1.View = View.Details;
-            // Add a column with width 20 and left alignment.
+            //listView1.OwnerDraw = true;
+            // 첫 번째 열은 가운데 정렬이 안되므로, 0으로 배치 
             listView1.Columns.Add("", 0, HorizontalAlignment.Center);
             listView1.Columns.Add("No", 100, HorizontalAlignment.Center);
             listView1.Columns.Add("Job_Status", 200, HorizontalAlignment.Center);
@@ -36,8 +40,13 @@ namespace BA_Dashboard
             listView1.Columns.Add("Server", 200, HorizontalAlignment.Center);
             listView1.Columns.Add("Schedule", 200, HorizontalAlignment.Center);
             listView1.Columns.Add("Files", 200, HorizontalAlignment.Center);
+            //listView1.DrawColumnHeader += new DrawListViewColumnHeaderEventHandler(listView1_DrawColumnHeader);
         }
-
+        void listView1_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            e.Graphics.FillRectangle(Brushes.DarkBlue, e.Bounds);
+            e.DrawText();
+        }
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             // 필터링데이터 리스트 초기화
@@ -56,6 +65,11 @@ namespace BA_Dashboard
                 // 버퍼 
                 Filtering_UC.Buffer = new byte[1024];
 
+
+                Filtering_UC.responseData = String.Empty;
+                Filtering_UC.rev = ClientSocket.Receive(Filtering_UC.Buffer);
+                Filtering_UC.responseData = System.Text.Encoding.ASCII.GetString(Filtering_UC.Buffer, 0, rev);
+
                 // 클라이언트측에서 서버에게 "접속완료" 문구보냄.
                 Filtering_UC.message = "Filtering_Data";
                 Filtering_UC.data = System.Text.Encoding.ASCII.GetBytes(Filtering_UC.message);
@@ -65,24 +79,22 @@ namespace BA_Dashboard
             {
                 MessageBox.Show("Socket Connection Error");
             }
-
-            // 텍스트박스에서 읽어온 고객이 검색한 Job_Type (검색기준)변수 
-            Job_Type = SearchTextBox.Text;
-            String responseData = String.Empty;
-            filepath = "C:\\Users\\BIT\\Desktop\\DownloadFromServer\\";
-            string message = string.Empty;
-
             byte[] Buffer = new byte[1024];
 
-            //접속환영문구 수신
+            // "Filtering_Enter" 메세지 받기  
             responseData = String.Empty;
-            int rev = ClientSocket.Receive(Buffer);
+            rev = 0;
+            rev = ClientSocket.Receive(Buffer);
             if (rev < 0)
             {
                 throw new SocketException();
             }
             responseData = System.Text.Encoding.ASCII.GetString(Buffer, 0, rev);
 
+            // 텍스트박스에서 읽어온 고객이 검색한 Job_Type (검색기준)변수 
+            Job_Type = SearchTextBox.Text;
+            filepath = "C:\\Users\\BIT\\Desktop\\DownloadFromServer\\";
+            message = string.Empty;
 
             // 서버에 필터링 기준 정보를 메세지로 보냄. 
             message = Job_Type;
@@ -173,6 +185,18 @@ namespace BA_Dashboard
             public string Filtering_Server { get; set; }
             public string Filtering_Schedule { get; set; }
             public string Filtering_Files { get; set; }
+        }
+
+        // 엔터 입력시 검색버튼 클릭과 동일한 이벤트 
+        private void SearchBtn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SearchBtn_Click(sender, e);
+        }
+
+        private void SearchComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SearchTextBox.Text = (string)SearchComboBox.SelectedItem;
         }
     }
 }

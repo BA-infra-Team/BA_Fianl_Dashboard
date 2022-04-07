@@ -141,24 +141,22 @@
             // 
             // CancleBtn
             // 
-            this.CancleBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancleBtn.Location = new System.Drawing.Point(621, 255);
             this.CancleBtn.Name = "CancleBtn";
             this.CancleBtn.Size = new System.Drawing.Size(75, 23);
             this.CancleBtn.TabIndex = 3;
-            this.CancleBtn.Text = "Cancle";
+            this.CancleBtn.Text = "Qiut";
             this.CancleBtn.UseVisualStyleBackColor = true;
             // 
             // LoginBtn
             // 
-            this.LoginBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.LoginBtn.Location = new System.Drawing.Point(485, 255);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.Size = new System.Drawing.Size(75, 23);
             this.LoginBtn.TabIndex = 2;
             this.LoginBtn.Text = "Login";
             this.LoginBtn.UseVisualStyleBackColor = true;
-            this.LoginBtn.Click += new System.EventHandler(this.button1_Click);
+            this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
             // Pwd_textbox
             // 
@@ -166,6 +164,7 @@
             this.Pwd_textbox.Name = "Pwd_textbox";
             this.Pwd_textbox.Size = new System.Drawing.Size(395, 21);
             this.Pwd_textbox.TabIndex = 1;
+            this.Pwd_textbox.Leave += new System.EventHandler(this.LoginBtn_Click);
             // 
             // ID_textbox
             // 

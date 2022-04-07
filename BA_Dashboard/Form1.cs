@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
@@ -15,8 +9,11 @@ namespace BA_Dashboard
 {
     public partial class Form1 : Form
     {
+        #region Form1 전체 클래스의 변수
         static Form1 _obj;
         public static Socket ClientSocket;
+        #endregion
+        #region 폼 인스턴스
         public static Form1 Instance
         {
             get
@@ -28,7 +25,8 @@ namespace BA_Dashboard
                 return _obj;
             }
         }
-
+        #endregion
+        #region 패널 변수 선언
         public Panel row_1_col_1_panel
         {
             get { return row_1_col_1_Panel; }
@@ -46,54 +44,10 @@ namespace BA_Dashboard
             get { return ContentPanel; }
             set { ContentPanel = value; }
         }
-
-
+        #endregion
+        #region 폼 생성자
         public Form1()
         {
-            ////파일 읽기
-            //string filepath = "C:\\Users\\BIT\\Desktop\\DownloadFromServer\\";
-            //IPAddress ipAddress = IPAddress.Parse("192.168.0.12");
-            //int port = 7754;
-            //IPEndPoint iPEndPoint = new IPEndPoint(ipAddress, port);
-            //Socket ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-
-            //ClientSocket.Connect(iPEndPoint);
-
-            //// 버퍼 
-            //byte[] Buffer = new byte[1024];
-
-            //// 클라이언트측에서 서버에게 "접속완료" 문구보냄.
-            //string message = "Connect With Client";
-            //byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
-            //ClientSocket.Send(data);
-
-            //// String to store the response ASCII representation.
-            //String responseData = String.Empty;
-            //// Read the first batch of the TcpServer response bytes.
-            //// 서버로부터 처음에 환영인사 문구 메세지 받음
-
-            //int rev = ClientSocket.Receive(Buffer);
-            //responseData = System.Text.Encoding.ASCII.GetString(Buffer, 0, rev);
-
-            ////MessageBox.Show("Received: {responseData}", responseData);
-
-            //// 첫 파일 구조체 정보 
-            //rev = ClientSocket.Receive(Buffer);
-            //int fileNameLen = BitConverter.ToInt32(Buffer, 0);
-            //string fileName = Encoding.ASCII.GetString(Buffer, 4, fileNameLen);
-
-            //// 첫 파일 저장 
-            //BinaryWriter bWrite = new BinaryWriter(File.Open(filepath + fileName, FileMode.Create, FileAccess.Write));
-            //bWrite.Write(Buffer, 4 + fileNameLen + 1, rev - 4 - fileNameLen - 1);
-            //bWrite.Close();
-
-            //// 파일 읽기 
-            //BinaryReader bRead = new BinaryReader(File.Open(filepath + fileName, FileMode.Open, FileAccess.Read));
-
-            //ChartData ChartDatas = new ChartData();
-            //ChartDatas.Read_Chart_Data(bRead);
-            //bRead.Close();
-
             // 포트 7756 테스트
             //파일 읽기
             string filepath = "C:\\Users\\BIT\\Desktop\\DownloadFromServer\\";
@@ -132,7 +86,6 @@ namespace BA_Dashboard
             Buffer = new byte[4096];
             rev = 0;
             rev = ClientSocket.Receive(Buffer, 0);
-            //rev = ClientSocket.Receive(Buffer, 0);
             BinaryWriter bWrite = new BinaryWriter(File.Open(filepath + fileName,
 FileMode.Create, FileAccess.Write));
 
@@ -153,7 +106,8 @@ FileMode.Create, FileAccess.Write));
             Filtering_UC Filter_UC = new Filtering_UC();
             
         }
-
+        #endregion
+        #region 폼이 처음 로드될 때 발생하는 함수 
         private void Form1_Load(object sender, EventArgs e)
         {
             _obj = this;
@@ -161,7 +115,8 @@ FileMode.Create, FileAccess.Write));
             r_1_c_1_UChome.Dock = DockStyle.Fill;
             row_1_col_1_Panel.Controls.Add(r_1_c_1_UChome);
         }
-
+        #endregion
+        #region 서치 메뉴 버튼 클릭시 이벤트 함수
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             if (!ContentPanel.Controls.ContainsKey("Filtering_UC"))
@@ -172,7 +127,8 @@ FileMode.Create, FileAccess.Write));
             }
             ContentPanel.Controls["Filtering_UC"].BringToFront();
         }
-
+        #endregion
+        #region 홈 메뉴 버튼 클릭시 이벤트 함수 
         private void HomeBtn_Click(object sender, EventArgs e)
         {
             if (ContentPanel.Controls.ContainsKey("Filtering_UC"))
@@ -188,7 +144,8 @@ FileMode.Create, FileAccess.Write));
                 ContentPanel.Controls["Error_UC"].SendToBack();
             }
         }
-
+        #endregion
+        #region 차트 메뉴 버튼 클릭시 이벤트 함수 
         private void ChartBtn_Click(object sender, EventArgs e)
         {
             if (!ContentPanel.Controls.ContainsKey("Chart_UC"))
@@ -199,7 +156,9 @@ FileMode.Create, FileAccess.Write));
             }
             ContentPanel.Controls["Chart_UC"].BringToFront();
         }
+        #endregion
 
+        #region 에러 메뉴 버튼 클릭시 이벤트 함수 
         private void ErrorBtn_Click(object sender, EventArgs e)
         {
             if (!ContentPanel.Controls.ContainsKey("Error_UC"))
@@ -210,8 +169,9 @@ FileMode.Create, FileAccess.Write));
             }
             ContentPanel.Controls["Error_UC"].BringToFront();
         }
+        #endregion
     }
-
+    #region 차트데이터 클래스
     public class ChartData
     {
         // 홈 UI, 백업-메소드 비율을 보여주기 위한 데이터 구조체 선언 
@@ -318,6 +278,7 @@ FileMode.Create, FileAccess.Write));
         public static int Total_Data_Transferred_LineChart_2022_02_14_Count;
         public static int Total_Data_Transferred_LineChart_2022_02_15_Count;
 
+        #region 차트데이터 바이너리로 읽어오는 함수
         public void Read_Chart_Data(BinaryReader bRead)
         {
             // 홈 UI, 백업-메소드 비율을 보여주기 위한 데이터 구조체 선언 
@@ -425,5 +386,7 @@ FileMode.Create, FileAccess.Write));
             Total_Data_Transferred_LineChart_2022_02_14_Count = bRead.ReadInt32();
             Total_Data_Transferred_LineChart_2022_02_15_Count = bRead.ReadInt32();
         }
+        #endregion
     }
+    #endregion
 }

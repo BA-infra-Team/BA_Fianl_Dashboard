@@ -142,7 +142,6 @@
             // FilterThirdTopPanel
             // 
             this.FilterThirdTopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(203)))));
-            this.FilterThirdTopPanel.Controls.Add(this.SearchBtn);
             this.FilterThirdTopPanel.Controls.Add(this.groupBox2);
             this.FilterThirdTopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.FilterThirdTopPanel.Location = new System.Drawing.Point(0, 0);
@@ -152,33 +151,35 @@
             // 
             // SearchBtn
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(554, 42);
+            this.SearchBtn.Location = new System.Drawing.Point(619, 44);
             this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(75, 23);
+            this.SearchBtn.Size = new System.Drawing.Size(80, 22);
             this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "검색";
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            this.SearchBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchBtn_KeyDown);
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.SearchBtn);
             this.groupBox2.Controls.Add(this.SearchTextBox);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.SearchComboBox);
             this.groupBox2.Location = new System.Drawing.Point(4, -2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(522, 76);
+            this.groupBox2.Size = new System.Drawing.Size(707, 76);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
             // SearchTextBox
             // 
-            this.SearchTextBox.Location = new System.Drawing.Point(357, 42);
+            this.SearchTextBox.Location = new System.Drawing.Point(405, 43);
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(125, 21);
+            this.SearchTextBox.Size = new System.Drawing.Size(180, 21);
             this.SearchTextBox.TabIndex = 8;
             // 
             // label3
@@ -186,19 +187,27 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(39, 42);
+            this.label3.Location = new System.Drawing.Point(14, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 21);
+            this.label3.Size = new System.Drawing.Size(151, 21);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Search By";
+            this.label3.Text = "Search By JobType";
             // 
             // SearchComboBox
             // 
             this.SearchComboBox.FormattingEnabled = true;
-            this.SearchComboBox.Location = new System.Drawing.Point(181, 43);
+            this.SearchComboBox.Items.AddRange(new object[] {
+            "File Backup",
+            "Informix Onbar Backup",
+            "Mysql Backup",
+            "Oracle RMAN Backup",
+            "Physical Backup",
+            "Vmware Backup"});
+            this.SearchComboBox.Location = new System.Drawing.Point(189, 43);
             this.SearchComboBox.Name = "SearchComboBox";
-            this.SearchComboBox.Size = new System.Drawing.Size(121, 20);
+            this.SearchComboBox.Size = new System.Drawing.Size(180, 20);
             this.SearchComboBox.TabIndex = 7;
+            this.SearchComboBox.SelectedIndexChanged += new System.EventHandler(this.SearchComboBox_SelectedIndexChanged);
             // 
             // Filtering_UC
             // 

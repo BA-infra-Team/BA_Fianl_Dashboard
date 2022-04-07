@@ -5,7 +5,6 @@ using LiveCharts.Wpf;
 using System.ComponentModel;
 using System.Windows;
 using System.Globalization;
-using LiveCharts.Defaults;
 using System.Windows.Data;
 
 namespace BA_Dashboard
