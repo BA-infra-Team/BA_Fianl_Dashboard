@@ -53,8 +53,11 @@
             this.row_1_col_1_Panel = new System.Windows.Forms.Panel();
             this.row_1_col_1_Line_UC1 = new BA_Dashboard.row_1_col_1_Line_UC();
             this.row_0_col_0_Panel = new System.Windows.Forms.Panel();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.row_0_col_01 = new BA_Dashboard.row_0_col_0();
+            this.row_0_col_0_tablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.row_0_col_0_Left_Panel = new System.Windows.Forms.Panel();
+            this.row_0_col_0_Left_UC1 = new BA_Dashboard.row_0_col_0_Left_UC();
+            this.row_0_col_0_Right_Panel = new System.Windows.Forms.Panel();
+            this.row_0_col_0_RIght_UC1 = new BA_Dashboard.row_0_col_0_RIght_UC();
             this.row_0_col_1_Panel = new System.Windows.Forms.Panel();
             this.elementHost2 = new System.Windows.Forms.Integration.ElementHost();
             this.row_0_col_11 = new BA_Dashboard.row_0_col_1();
@@ -62,7 +65,6 @@
             this.elementHost3 = new System.Windows.Forms.Integration.ElementHost();
             this.row_1_col_01 = new BA_Dashboard.row_1_col_0();
             this.SecondTopPanel = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
@@ -76,6 +78,9 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.row_1_col_1_Panel.SuspendLayout();
             this.row_0_col_0_Panel.SuspendLayout();
+            this.row_0_col_0_tablePanel.SuspendLayout();
+            this.row_0_col_0_Left_Panel.SuspendLayout();
+            this.row_0_col_0_Right_Panel.SuspendLayout();
             this.row_0_col_1_Panel.SuspendLayout();
             this.row_1_col_0_Panel.SuspendLayout();
             this.SecondTopPanel.SuspendLayout();
@@ -377,22 +382,61 @@
             // 
             // row_0_col_0_Panel
             // 
-            this.row_0_col_0_Panel.Controls.Add(this.elementHost1);
+            this.row_0_col_0_Panel.Controls.Add(this.row_0_col_0_tablePanel);
             this.row_0_col_0_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.row_0_col_0_Panel.Location = new System.Drawing.Point(4, 4);
             this.row_0_col_0_Panel.Name = "row_0_col_0_Panel";
             this.row_0_col_0_Panel.Size = new System.Drawing.Size(814, 412);
             this.row_0_col_0_Panel.TabIndex = 6;
             // 
-            // elementHost1
+            // row_0_col_0_tablePanel
             // 
-            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.elementHost1.Location = new System.Drawing.Point(0, 0);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(814, 412);
-            this.elementHost1.TabIndex = 0;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.row_0_col_01;
+            this.row_0_col_0_tablePanel.ColumnCount = 2;
+            this.row_0_col_0_tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.row_0_col_0_tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.row_0_col_0_tablePanel.Controls.Add(this.row_0_col_0_Left_Panel, 0, 0);
+            this.row_0_col_0_tablePanel.Controls.Add(this.row_0_col_0_Right_Panel, 1, 0);
+            this.row_0_col_0_tablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.row_0_col_0_tablePanel.Location = new System.Drawing.Point(0, 0);
+            this.row_0_col_0_tablePanel.Name = "row_0_col_0_tablePanel";
+            this.row_0_col_0_tablePanel.RowCount = 1;
+            this.row_0_col_0_tablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.row_0_col_0_tablePanel.Size = new System.Drawing.Size(814, 412);
+            this.row_0_col_0_tablePanel.TabIndex = 0;
+            // 
+            // row_0_col_0_Left_Panel
+            // 
+            this.row_0_col_0_Left_Panel.Controls.Add(this.row_0_col_0_Left_UC1);
+            this.row_0_col_0_Left_Panel.Location = new System.Drawing.Point(3, 3);
+            this.row_0_col_0_Left_Panel.MaximumSize = new System.Drawing.Size(200, 200);
+            this.row_0_col_0_Left_Panel.MinimumSize = new System.Drawing.Size(401, 406);
+            this.row_0_col_0_Left_Panel.Name = "row_0_col_0_Left_Panel";
+            this.row_0_col_0_Left_Panel.Size = new System.Drawing.Size(401, 406);
+            this.row_0_col_0_Left_Panel.TabIndex = 0;
+            // 
+            // row_0_col_0_Left_UC1
+            // 
+            this.row_0_col_0_Left_UC1.Location = new System.Drawing.Point(0, -1);
+            this.row_0_col_0_Left_UC1.Name = "row_0_col_0_Left_UC1";
+            this.row_0_col_0_Left_UC1.onDrag = false;
+            this.row_0_col_0_Left_UC1.Size = new System.Drawing.Size(401, 411);
+            this.row_0_col_0_Left_UC1.TabIndex = 0;
+            // 
+            // row_0_col_0_Right_Panel
+            // 
+            this.row_0_col_0_Right_Panel.Controls.Add(this.row_0_col_0_RIght_UC1);
+            this.row_0_col_0_Right_Panel.Location = new System.Drawing.Point(410, 3);
+            this.row_0_col_0_Right_Panel.Name = "row_0_col_0_Right_Panel";
+            this.row_0_col_0_Right_Panel.Size = new System.Drawing.Size(401, 406);
+            this.row_0_col_0_Right_Panel.TabIndex = 1;
+            // 
+            // row_0_col_0_RIght_UC1
+            // 
+            this.row_0_col_0_RIght_UC1.Location = new System.Drawing.Point(-1, 0);
+            this.row_0_col_0_RIght_UC1.Name = "row_0_col_0_RIght_UC1";
+            this.row_0_col_0_RIght_UC1.onDrag = false;
+            this.row_0_col_0_RIght_UC1.Size = new System.Drawing.Size(401, 406);
+            this.row_0_col_0_RIght_UC1.TabIndex = 0;
             // 
             // row_0_col_1_Panel
             // 
@@ -435,7 +479,6 @@
             // SecondTopPanel
             // 
             this.SecondTopPanel.BackColor = System.Drawing.Color.White;
-            this.SecondTopPanel.Controls.Add(this.button8);
             this.SecondTopPanel.Controls.Add(this.pictureBox2);
             this.SecondTopPanel.Controls.Add(this.label2);
             this.SecondTopPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -443,18 +486,6 @@
             this.SecondTopPanel.Name = "SecondTopPanel";
             this.SecondTopPanel.Size = new System.Drawing.Size(1644, 62);
             this.SecondTopPanel.TabIndex = 6;
-            // 
-            // button8
-            // 
-            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(1647, 19);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(42, 28);
-            this.button8.TabIndex = 9;
-            this.button8.UseVisualStyleBackColor = true;
             // 
             // pictureBox2
             // 
@@ -505,6 +536,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.row_1_col_1_Panel.ResumeLayout(false);
             this.row_0_col_0_Panel.ResumeLayout(false);
+            this.row_0_col_0_tablePanel.ResumeLayout(false);
+            this.row_0_col_0_Left_Panel.ResumeLayout(false);
+            this.row_0_col_0_Right_Panel.ResumeLayout(false);
             this.row_0_col_1_Panel.ResumeLayout(false);
             this.row_1_col_0_Panel.ResumeLayout(false);
             this.SecondTopPanel.ResumeLayout(false);
@@ -540,8 +574,9 @@
         private System.Windows.Forms.Panel row_1_col_1_Panel;
         private row_1_col_1_Line_UC row_1_col_1_Line_UC1;
         private System.Windows.Forms.Panel row_0_col_0_Panel;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private row_0_col_0 row_0_col_01;
+        private System.Windows.Forms.TableLayoutPanel row_0_col_0_tablePanel;
+        private System.Windows.Forms.Panel row_0_col_0_Left_Panel;
+        private System.Windows.Forms.Panel row_0_col_0_Right_Panel;
         private System.Windows.Forms.Panel row_0_col_1_Panel;
         private System.Windows.Forms.Integration.ElementHost elementHost2;
         private row_0_col_1 row_0_col_11;
@@ -549,9 +584,10 @@
         private System.Windows.Forms.Integration.ElementHost elementHost3;
         private row_1_col_0 row_1_col_01;
         private System.Windows.Forms.Panel SecondTopPanel;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
+        private row_0_col_0_Left_UC row_0_col_0_Left_UC1;
+        private row_0_col_0_RIght_UC row_0_col_0_RIght_UC1;
     }
 }
 

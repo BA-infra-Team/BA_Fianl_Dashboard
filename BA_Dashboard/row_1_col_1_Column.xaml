@@ -21,7 +21,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Content="File Size, Write Size, Transferred Data (GB) || Bar Chart" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+            <Label Grid.Row="0" Grid.Column="0" Content="File Size, Write Size, Transferred Data (GB) || Bar Chart" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" FontFamily="Candara"/>
         </Grid>
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
             <CheckBox IsChecked="{Binding FileSizeSeriesVisibility}" Margin="10,0,0,0">

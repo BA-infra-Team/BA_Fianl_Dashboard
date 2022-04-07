@@ -46,7 +46,7 @@
                 <lvc:Axis Title="GB" Name="Y" LabelFormatter="{Binding YFormatter}"/>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <Label Grid.Row="0" Grid.Column="0" Content="File Size, Write Size, Transferred Data (GB) || Line Chart" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="File Size, Write Size, Transferred Data (GB) || Line Chart" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Candara"/>
         <Button Grid.Row="0" Grid.Column="1" Content="Next" HorizontalAlignment="Right" VerticalAlignment="Center" Width="70" Click="Button_Click"/>
 
     </Grid>

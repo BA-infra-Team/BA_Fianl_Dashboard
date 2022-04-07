@@ -177,8 +177,12 @@ FileMode.Create, FileAccess.Write));
         // 홈 UI, 백업-메소드 비율을 보여주기 위한 데이터 구조체 선언 
         public static int Backup_Method_Ratio_Pie_Chart_Total_Count;
         public static int Backup_Method_Ratio_Pie_Chart_Archive_Backup_Count;
+        public static int Backup_Method_Ratio_Pie_Chart_Cumulative_Backup_Count;
         public static int Backup_Method_Ratio_Pie_Chart_Differential_Backup_Count;
         public static int Backup_Method_Ratio_Pie_Chart_Dump_Backup_Count;
+        public static int Backup_Method_Ratio_Pie_Chart_Enterprise_Differential_Backup_Count;
+        public static int Backup_Method_Ratio_Pie_Chart_Enterprise_Full_Backup_Count;
+        public static int Backup_Method_Ratio_Pie_Chart_Enterprise_Incremental_Backup_Count;
         public static int Backup_Method_Ratio_Pie_Chart_Full_Backup_Count;
         public static int Backup_Method_Ratio_Pie_Chart_Incremental_Backup_Count;
         public static int Backup_Method_Ratio_Pie_Chart_Synthetic_Count;
@@ -284,11 +288,16 @@ FileMode.Create, FileAccess.Write));
             // 홈 UI, 백업-메소드 비율을 보여주기 위한 데이터 구조체 선언 
             Backup_Method_Ratio_Pie_Chart_Total_Count = bRead.ReadInt32();
             Backup_Method_Ratio_Pie_Chart_Archive_Backup_Count = bRead.ReadInt32();
+            Backup_Method_Ratio_Pie_Chart_Cumulative_Backup_Count = bRead.ReadInt32();
             Backup_Method_Ratio_Pie_Chart_Differential_Backup_Count = bRead.ReadInt32();
             Backup_Method_Ratio_Pie_Chart_Dump_Backup_Count = bRead.ReadInt32();
+            Backup_Method_Ratio_Pie_Chart_Enterprise_Differential_Backup_Count = bRead.ReadInt32();
+            Backup_Method_Ratio_Pie_Chart_Enterprise_Full_Backup_Count = bRead.ReadInt32();
+            Backup_Method_Ratio_Pie_Chart_Enterprise_Incremental_Backup_Count = bRead.ReadInt32();
             Backup_Method_Ratio_Pie_Chart_Full_Backup_Count = bRead.ReadInt32();
             Backup_Method_Ratio_Pie_Chart_Incremental_Backup_Count = bRead.ReadInt32();
             Backup_Method_Ratio_Pie_Chart_Synthetic_Count = bRead.ReadInt32();
+
 
             // 홈 UI, 일별 총 백업 수를 보여주 데이터 구조체 선언
             Total_Backup_Count_LineChart_2022_02_08_Completed_Count = bRead.ReadInt32();

@@ -107,10 +107,6 @@ namespace BA_Dashboard
 
                     if (responseData == "Login_Success")
                     {
-                        //var MainDashBoard = new Form1();
-                        //MainDashBoard.Show();
-                        //ClientSocket.Close();
-
                         Form1 MainDashBoard = new Form1();
                         this.Hide();
                         MainDashBoard.ShowDialog();
